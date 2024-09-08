@@ -1,3 +1,3 @@
-// js
+// scripts
 
 console.log("Hello World");

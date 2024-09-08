@@ -1,10 +1,23 @@
-/* css */
+/* styles */
 
 body {
-  width: 720px;
-  margin: 0 auto;
+  font-family: monospace;
 }
 
 a:visited {
-  color: initial; /* Make visited links the same color as unvisited links */
+  color: initial;
+}
+
+.pizza {
+  display: inline-block;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
