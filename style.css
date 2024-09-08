@@ -1,0 +1,10 @@
+/* css */
+
+body {
+  width: 720px;
+  margin: 0 auto;
+}
+
+a:visited {
+  color: initial; /* Make visited links the same color as unvisited links */
+}
