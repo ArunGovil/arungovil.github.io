@@ -1,9 +1,7 @@
----
-title: "1 Minute React Native Onboarding Screen"
-date: "21-12-2022"
-description: "The tutorial helps you setup an onboarding screen in one minute"
-topic: "React Native"
----
+
+# 1 Minute React Native Onboarding Screen
+> Posted on December 22, 2022
+
 
 I'm excited to introduce you to one on my react native packages: [React Native Flatboard](https://www.npmjs.com/package/react-native-flatboard).
 
