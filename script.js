@@ -2,7 +2,7 @@
 
 const posts_api =
   "https://api.github.com/repos/ArunGovil/arungovil.github.io/contents/posts";
-const github_url = "https://github.com/ArunGovil/arungovil.github.io/blob/main";
+const github_uri = "https://arungovil.github.io";
 
 async function getPosts() {
   try {
@@ -14,7 +14,7 @@ async function getPosts() {
         const postItem = document.createElement("li");
         const link = document.createElement("a");
         link.textContent = post.name;
-        link.href = `${github_url}/${post.path}`;
+        link.href = `${github_uri}/${post.path}`;
         link.target = "_blank";
         postItem.appendChild(link);
         element.appendChild(postItem);
