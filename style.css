@@ -8,6 +8,10 @@ body {
   color: #454545;
 }
 
+a {
+  color: #0077aa;
+}
+
 a:visited {
   color: initial;
 }
