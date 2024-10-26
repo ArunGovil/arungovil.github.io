@@ -10,12 +10,14 @@ async function getPosts() {
     if (posts.length > 0) {
       const element = document.getElementById("posts");
       posts.forEach((post) => {
-        const postItem = document.createElement("li");
-        const link = document.createElement("a");
-        link.textContent = post.name;
-        link.href = `${post.path}`;
-        postItem.appendChild(link);
-        element.appendChild(postItem);
+        if (post.name.endsWith(".md")) {
+          const postItem = document.createElement("li");
+          const link = document.createElement("a");
+          link.textContent = post.name;
+          link.href = `/${post.path}`;
+          postItem.appendChild(link);
+          element.appendChild(postItem);
+        }
       });
     }
   } catch (e) {
