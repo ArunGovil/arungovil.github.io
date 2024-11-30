@@ -25,8 +25,36 @@ async function getPosts() {
   }
 }
 
+async function getPhotos() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/photos");
+    const photos = await response.json();
+    return photos;
+  } catch (e) {
+    console.error("Error fetching photos", e);
+  }
+}
+
+async function renderPhotos() {
+  const photos = await getPhotos();
+  const toRender = photos.slice(0, 15);
+  if (toRender.length > 0) {
+    const element = document.getElementById("gallery");
+    toRender.forEach((photo) => {
+      const photoItem = document.createElement("li");
+      photoItem.classList.add("photo");
+      const image = document.createElement("img");
+      image.classList.add("image");
+      image.src = photo.url;
+      photoItem.appendChild(image);
+      element.appendChild(photoItem);
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const page = window.location.pathname;
 
-  if (page === "/" || "/posts") getPosts();
+  if (page === "/posts/") getPosts();
+  if (page === "/photos/") renderPhotos();
 });
