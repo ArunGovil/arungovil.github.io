@@ -35,9 +35,8 @@ async function getPhotos() {
   }
 }
 
-async function renderPhotos() {
-  const photos = await getPhotos();
-  const toRender = photos.slice(0, 15);
+function renderPhotos(toRender) {
+  console.log("Rendering", toRender);
   if (toRender.length > 0) {
     const element = document.getElementById("gallery");
     toRender.forEach((photo) => {
@@ -52,9 +51,33 @@ async function renderPhotos() {
   }
 }
 
+const options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 1.0,
+};
+
+async function handlePhotos() {
+  const photos = await getPhotos();
+  let toRender = photos.slice(0, 15);
+
+  const observer = new IntersectionObserver((item) => {
+    const isIntersecting = item[0].isIntersecting;
+    if (isIntersecting) {
+      const newItems = photos.slice(toRender.length, toRender.length + 15);
+      toRender = [...toRender, ...newItems];
+      renderPhotos(toRender);
+      observer.observe(document.querySelector(".photo:last-child"));
+    }
+  }, options);
+
+  renderPhotos(toRender, observer);
+  observer.observe(document.querySelector(".photo:last-child"));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const page = window.location.pathname;
 
   if (page === "/posts/") getPosts();
-  if (page === "/photos/") renderPhotos();
+  if (page === "/photos/") handlePhotos();
 });
