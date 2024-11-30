@@ -15,3 +15,15 @@ a {
 a:visited {
   color: initial;
 }
+
+.cover {
+  width: 18rem;
+}
+
+p {
+  line-height: 1.2rem;
+}
+
+hr {
+  border: 0.1px solid #444;
+}
